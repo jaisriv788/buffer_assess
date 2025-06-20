@@ -68,7 +68,7 @@ export default function Component() {
     // }
     try {
       const res = await axios.post(
-        "http://localhost:4000/submitForm",
+        "https://buffer-assess.onrender.com/submitForm",
         formData,
         {
           headers: {

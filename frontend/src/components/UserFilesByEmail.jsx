@@ -6,7 +6,7 @@ const UserFilesByEmail = ({ userEmail }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_BASE_URL = "http://localhost:4000";
+  const API_BASE_URL = "https://buffer-assess.onrender.com";
 
   useEffect(() => {
     const fetchUserFiles = async () => {
