@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
         street2: { type: String },
     },
     permanentAddress: {
-        street1: { type: String, required: true },
+        street1: { type: String },
         street2: { type: String },
     },
     files: [FileSchema], 
