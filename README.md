@@ -24,7 +24,7 @@ Before running this application, make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone [<your-repository-url>](https://github.com/jaisriv788/buffer_assess.git)
+git clone (https://github.com/jaisriv788/buffer_assess.git)
 cd buffer_assess
 ```
 
