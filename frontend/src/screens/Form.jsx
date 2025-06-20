@@ -123,7 +123,7 @@ export default function Component() {
       >
         <ArrowUp />
       </div>
-      <div className="min-h-screen bg-gray-50 py-4 sm:py-8 px-2 sm:px-4">
+      <div className="min-h-screen bg-gray-50 py-4 sm:py-8 px-2 sm:px-4 ">
         <div className="max-w-5xl mx-auto px-2 sm:px-0">
           <div className="bg-white rounded-lg shadow-md border border-gray-200">
             <div className="px-6 py-4 border-b border-gray-200">

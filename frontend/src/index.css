@@ -164,13 +164,13 @@ button {
   transform: scale(1.1);
 }
 
-.btns{
+.btns {
   display: flex;
-  gap:15px
+  gap: 15px;
 }
 
-.details-navigation{
- cursor: pointer;
+.details-navigation {
+  cursor: pointer;
   background-color: #fff;
   color: #1e293b;
   font-size: 1.1rem;
@@ -185,6 +185,10 @@ button {
   transform: scale(1.1);
 }
 
+.small-screen-details {
+ display: none;
+}
+
 @media (max-width: 888px) {
   .main-title {
     font-size: 3rem;
@@ -195,7 +199,26 @@ button {
   .hero-content {
     gap: 40px;
   }
-  .form-navigation{
+  .form-navigation {
     padding: 6px 10px;
+  }
+  .details-navigation {
+    display: none;
+  }
+  .small-screen-details {
+    display: block;
+    cursor: pointer;
+    background-color: #1e293b;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .small-screen-details:hover {
+    background-color: #d5d5d5;
+    color: #1e293b;
+    transform: scale(1.1);
   }
 }

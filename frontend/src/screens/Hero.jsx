@@ -2,8 +2,11 @@ import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import { Github, Linkedin } from "lucide-react";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router";
 
 function Hero() {
+    const navigate = useNavigate();
+
   function github() {
     window.open(
       "https://github.com/jaisriv788",
@@ -19,6 +22,11 @@ function Hero() {
       "noopener,noreferrer"
     );
   }
+
+  function routeToDetail() {
+    navigate("/details");
+  }
+
   return (
     <section id="hero" className="screens hero-section">
       <video autoPlay loop muted playsInline className="background-video">
@@ -67,6 +75,16 @@ function Hero() {
             {" "}
             <Linkedin /> LinkedIn
           </Button>
+        </motion.div>
+        <motion.div
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 4 }}
+          className="home-buttons w-3/4"
+        >
+          <button clickFn={routeToDetail} className="small-screen-details w-full" >
+            Get Details
+          </button>
         </motion.div>
       </div>
     </section>
