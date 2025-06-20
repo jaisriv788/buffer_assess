@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowUp } from "lucide-react";
-// import axios from "axios";
+import axios from "axios";
 
 export default function Component() {
   const [sameAsResidential, setSameAsResidential] = useState(false);
@@ -53,9 +53,38 @@ export default function Component() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    console.log(formData);
+    const data = Object.fromEntries(formData.entries());
 
-    e.target.reset();
+    const dateOfBirth = data.dateOfBirth;
+    if (!validateAge(dateOfBirth)) {
+      document.getElementById("dateOfBirth").scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      return;
+    }
+    // for (let [key, value] of formData.entries()) {
+    //   console.log(`${key}: ${value}`);
+    // }
+    try {
+      const res = await axios.post(
+        "https://buffer-assess.onrender.com/submitForm",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("Server response:", res.data);
+      alert("Form Submitted Successfully.")
+      e.target.reset();
+    } catch (error) {
+      console.error(
+        "Error submitting form:",
+        error.response?.data || error.message
+      );
+    }
   };
 
   const addUploadSection = () => {
