@@ -1,6 +1,7 @@
 const User = require("../modal/person.modal");
 
 const submitForm = async (req, res) => {
+  
   try {
     const {
       firstName,
@@ -43,9 +44,16 @@ const submitForm = async (req, res) => {
       },
       files,
     };
-    const user = User.findOne(userData.email);
 
-    if (!user) {
+    const existingUser = await User.findOne({ email });
+
+    if (existingUser) {
+      await User.updateOne({ email }, userData);
+      res.status(200).json({
+        message: "User and files updated successfully",
+        userId: existingUser._id,
+      });
+    } else {
       const newUser = new User(userData);
       const savedUser = await newUser.save();
       res.status(201).json({
@@ -53,13 +61,6 @@ const submitForm = async (req, res) => {
         userId: savedUser._id,
       });
     }
-
-    const userUpdated = await User.updateOne(userData);
-
-    res.status(201).json({
-      message: "User and files updated successfully",
-      userId: userUpdated._id,
-    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
