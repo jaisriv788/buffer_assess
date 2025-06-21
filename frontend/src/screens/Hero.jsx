@@ -82,7 +82,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 4 }}
           className="home-buttons w-3/4"
         >
-          <button clickFn={routeToDetail} className="small-screen-details w-full" >
+          <button onClick={routeToDetail} className="small-screen-details w-full" >
             Get Details
           </button>
         </motion.div>
