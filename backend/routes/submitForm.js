@@ -35,23 +35,31 @@ const submitForm = async (req, res) => {
       dateOfBirth: new Date(dateOfBirth),
       residentialAddress: {
         street1: residentialStreet1,
-        street2: residentialStreet2 || '',
+        street2: residentialStreet2 || "",
       },
       permanentAddress: {
         street1: permanentStreet1,
-        street2: permanentStreet2 || '',
+        street2: permanentStreet2 || "",
       },
       files,
     };
+    const user = User.findOne(userData.email);
 
-    const newUser = new User(userData);
-    const savedUser = await newUser.save();
+    if (!user) {
+      const newUser = new User(userData);
+      const savedUser = await newUser.save();
+      res.status(201).json({
+        message: "User and files saved as buffers successfully",
+        userId: savedUser._id,
+      });
+    }
 
-    res.status(201).json({ 
-      message: "User and files saved as buffers successfully", 
-      userId: savedUser._id 
+    const userUpdated = await User.updateOne(userData);
+
+    res.status(201).json({
+      message: "User and files updated successfully",
+      userId: userUpdated._id,
     });
-    
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
