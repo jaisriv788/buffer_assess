@@ -1,7 +1,7 @@
 const User = require("../modal/person.modal");
 
 const submitForm = async (req, res) => {
-  
+
   try {
     const {
       firstName,
@@ -47,6 +47,9 @@ const submitForm = async (req, res) => {
 
     const existingUser = await User.findOne({ email });
 
+    console.log(existingUser);
+
+    
     if (existingUser) {
       await User.updateOne({ email }, userData);
       res.status(200).json({
