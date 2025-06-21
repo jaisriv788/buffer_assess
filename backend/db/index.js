@@ -3,11 +3,7 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      process.env.MONGODB_URL || "mongodb://localhost:27017/storage",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
+      process.env.MONGODB_URL || "mongodb://localhost:27017/storage"
     );
   } catch (error) {
     console.log(`MongoDB error: ${error}`);
